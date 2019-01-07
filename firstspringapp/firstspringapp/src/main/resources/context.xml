@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- The below tag is for Annotation - Comment Bean tags to use Annotation -->
+	<!-- <context:component-scan base-package="com.capgemini.app"/> -->
+
+	<context:property-placeholder location="classpath:ipAddress.properties" />
+	<bean id="organization" class="com.capgemini.app.bean.Organization">
+		<property name="boardMembers" ref="list"></property>
+		<property name="branchManagers" ref="map"></property>
+		<property name="cities" ref="set"></property>
+		<property name="dateOfEstablishment">
+		<bean class="java.time.LocalDate" factory-method="parse">
+		<constructor-arg value="1997-03-11" ></constructor-arg>
+		</bean>
+		</property>
+		<property name="ipAddresses" value="${IP-ADDRESS2}">
+	
+	</property>
+		<property name="listed" value="true"></property>
+		<property name="name" value="shailaja-private-limited"></property>
+		<property name="orgId" value="101"></property>
+		<property name="shareValue" value="100000000"></property>
+	</bean>
+	
+	<!-- <bean id="organization2" class="com.capgemini.app.bean.Organization">
+		<constructor-arg value="" />
+		<constructor-arg ref="s" />
+	</bean> -->
+	<util:list  id="list">
+	<value>shailaja</value>
+	<value>priyanka</value>
+	<value>shubham</value>
+	<value>tea</value>
+	</util:list>
+	
+	<util:set id="set">
+	<value>MUMBAI</value>
+	<value>Banglore</value>
+	<value>Chennnai</value>
+	</util:set>
+	
+	
+	<util:map id="map">
+	<entry key="MUMBAI" value="SHAILAJA"></entry>
+	<entry key="Banglore" value="tea"></entry>
+	<entry key="Chennai" value="Priyanka"></entry>
+	</util:map>
+	
+	
+	
+</beans>
+
+
+
+
+
